@@ -1,0 +1,365 @@
+extends layout
+
+block content
+    //- fb:login-button(scope='public_profile,email, user_friends', onlogin='checkLoginState();')
+    //- div(id='status')
+    //- button(onclick='test()')="Test"
+    //- button(onclick='logoutFB()')="Logout"
+
+    #preloader
+      #status
+        img(src='img/preloader.gif', height='64', width='64', alt='')
+    //
+      Navigation
+      ==========================================
+    nav#menu.navbar.navbar-default.navbar-fixed-top
+      .container
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand
+            i.fa.fa-flag-checkered.fa-flip-horizontal
+            |  Junkies
+            strong
+        // Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a.page-scroll(href='#home') Home
+            // <li><a href="#services-section" class="page-scroll">Services</a></li>
+            li
+              a.page-scroll(href='#works-section') Quiz
+            li
+              a.page-scroll(href='#about-section') About
+            li
+              a.page-scroll(href='#team-section') Team
+            li
+              a.page-scroll(href='#Login-section') Log In
+            //
+              <li><a href="#testimonials-section" class="page-scroll">Testimonials</a></li>
+              <li><a href="#contact-section" class="page-scroll">Contact</a></li>
+        // /.navbar-collapse
+      // /.container-fluid
+    // Header
+    header.text-center(name='home')
+      .intro-text
+        h1.wow.fadeInDown
+          | We are 
+          strong
+            span.color Movie Junkies
+        p.wow.fadeInDown
+        a.btn.btn-default.btn-lg.page-scroll.wow.fadeInUp(href='#Login-section', data-wow-delay='200ms') Lets Play
+    
+    // Login section for facebook
+    #Login-section.text-center
+      .container
+        // Container
+        .section-title.wow.fadeInDown
+          h2
+            strong Login via Facebook
+          hr
+          .clearfix
+          //- a.btn.btn-primary.btn-lg.page-scroll.wow.fadeInUp(href='#works-section', data-wow-delay='200ms') Log In
+          fb:login-button(scope='public_profile,email,user_friends', onlogin='checkLoginState();', id='fb-login-button')
+          button(type='button' class='btn btn-warning' id='fb-logout-button') Logout
+          .fb-div
+            .status-div
+            .challenge-div
+
+        p
+    // Portfolio Section
+    #works-section.text-center
+      .container
+        // Container
+        .section-title.wow.fadeInDown
+          h2
+            strong Category
+          hr
+          .clearfix
+          p Choose one of the following
+        .categories
+          ul.cat
+            li
+              ol.type
+                li
+                  a.active(href='#', data-filter='*') All
+                li
+                  a(href='#', data-filter='.topMovie-category') Top Movies
+                li
+                  a(href='#', data-filter='.actresses-category') Actresses
+                li
+                  a(href='#', data-filter='.actor-category') Actors
+                li
+                  a(href='#', data-filter='.genre-category') Genres
+                li
+                  a(href='#', data-filter='.awards-category') Awards
+          .clearfix
+        .row
+          .portfolio-items
+            each val, index in categories
+              if index < 4
+                .col-sm-6.col-md-3.col-lg-3.topMovie-category
+                  .portfolio-item.wow.fadeInUp(data-wow-delay='200ms')
+                    .hover-bg
+                      a.portfolio-link(href= '#portfolioModal'+index, data-toggle='modal')
+                        .hover-text
+                          h4= val.name
+                          // Web Design
+                          .clearfix
+                          i.fa.fa-plus
+                        img.img-responsive(src='img/portfolio/'+val.image, alt='Project Title')
+              else if index < 17
+                .col-sm-6.col-md-3.col-lg-3.actresses-category
+                  .portfolio-item.wow.fadeInUp(data-wow-delay='200ms')
+                    .hover-bg
+                      a.portfolio-link(href= '#portfolioModal'+index, data-toggle='modal')
+                        .hover-text
+                          h4= val.name
+                          // Web Design
+                          .clearfix
+                          i.fa.fa-plus
+                        img.img-responsive(src='img/portfolio/'+val.image, alt='Project Title')
+              else if index < 30
+                .col-sm-6.col-md-3.col-lg-3.actor-category
+                  .portfolio-item.wow.fadeInUp(data-wow-delay='200ms')
+                    .hover-bg
+                      a.portfolio-link(href= '#portfolioModal'+index, data-toggle='modal')
+                        .hover-text
+                          h4= val.name
+                          // Web Design
+                          .clearfix
+                          i.fa.fa-plus
+                        img.img-responsive(src='img/portfolio/'+val.image, alt='Project Title')
+              else if index < 38
+                .col-sm-6.col-md-3.col-lg-3.genre-category
+                  .portfolio-item.wow.fadeInUp(data-wow-delay='200ms')
+                    .hover-bg
+                      a.portfolio-link(href= '#portfolioModal'+index, data-toggle='modal')
+                        .hover-text
+                          h4= val.name
+                          // Web Design
+                          .clearfix
+                          i.fa.fa-plus
+                        img.img-responsive(src='img/portfolio/'+val.image, alt='Project Title')
+              else
+                .col-sm-6.col-md-3.col-lg-3.awards-category
+                  .portfolio-item.wow.fadeInUp(data-wow-delay='200ms')
+                    .hover-bg
+                      a.portfolio-link(href= '#portfolioModal'+index, data-toggle='modal')
+                        .hover-text
+                          h4= val.name
+                          // Web Design
+                          .clearfix
+                          i.fa.fa-plus
+                        img.img-responsive(src='img/portfolio/'+val.image, alt='Project Title')
+            
+    // About Section
+    #about-section
+      .container
+        .section-title.text-center.wow.fadeInDown
+          h2
+            strong CIS 450/550
+            |  Project
+          hr
+          //
+            <div class="clearfix"></div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamcommodo nibh ante facilisis.</p>
+            </div>
+          .row
+            .col-md-6.wow.fadeInLeft
+              img.img-responsive(src='img/about.png')
+            .col-md-6.wow.fadeInRight
+              h4 Motivation
+              p   
+              p
+                | A movie quiz application presents itself as an interesting project that is stimulating and socially engaging. Users can be tested on their own knowledge of movies as well as challenge one another.
+              .space
+              h4 What We Have Achieved
+              .space
+              .list-style
+                .row
+                  .col-lg-6.col-sm-6.col-xs-12
+                    ul
+                      li Facebook API
+                      li 40 unique Quizzes
+                      li NoSQL component
+                      li Global leaderboard
+                  .col-lg-6.col-sm-6.col-xs-12
+                    ul
+                      li Friends leaderboard
+                      li Challenge a Facebook friend
+                      li Used Academy Awards Dataset
+                      li Bing Search API
+      // Team Section
+      #team-section.text-center
+        .container
+          .section-title.wow.fadeInDown
+            h2
+              | Meet the 
+              strong Team
+            hr
+            .clearfix
+            // <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamcommodo nibh ante facilisis.</p>
+          #row
+            .col-md-3.col-sm-6.team.wow.fadeInUp(data-wow-delay='200ms')
+              .thumbnail
+                img.img-circle.team-img(src='img/team/01.jpg', alt='...')
+                .caption
+                  h3 Tejesvi Chadag
+                  p CEO / Founder
+                  ul.list-inline
+                    li
+                      a(href='#')
+                        i.fa.fa-facebook
+                    li
+                      a(href='#')
+                        i.fa.fa-twitter
+                    li
+                      a(href='#')
+                        i.fa.fa-google-plus
+            .col-md-3.col-sm-6.team.wow.fadeInUp(data-wow-delay='400ms')
+              .thumbnail
+                img.img-circle.team-img(src='img/team/02.jpg', alt='...')
+                .caption
+                  h3 Archith Shivanagere
+                  p Web Designer
+                  ul.list-inline
+                    li
+                      a(href='#')
+                        i.fa.fa-facebook
+                    li
+                      a(href='#')
+                        i.fa.fa-twitter
+                    li
+                      a(href='#')
+                        i.fa.fa-google-plus
+            .col-md-3.col-sm-6.team.wow.fadeInUp(data-wow-delay='600ms')
+              .thumbnail
+                img.img-circle.team-img(src='img/team/03.jpg', alt='...')
+                .caption
+                  h3 Amey Hegde
+                  p Web Designer
+                  ul.list-inline
+                    li
+                      a(href='#')
+                        i.fa.fa-facebook
+                    li
+                      a(href='#')
+                        i.fa.fa-twitter
+                    li
+                      a(href='#')
+                        i.fa.fa-google-plus
+            .col-md-3.col-sm-6.team.wow.fadeInUp(data-wow-delay='800ms')
+              .thumbnail
+                img.img-circle.team-img(src='img/team/04.jpg', alt='...')
+                .caption
+                  h3 Bill Dong
+                  p Project Manager
+                  ul.list-inline
+                    li
+                      a(href='#')
+                        i.fa.fa-facebook
+                    li
+                      a(href='#')
+                        i.fa.fa-twitter
+                    li
+                      a(href='#')
+                        i.fa.fa-google-plus
+
+      each val, index in categories
+        .portfolio-modal.modal.fade(id='portfolioModal'+index tabindex='-1', role='dialog', aria-hidden='true')
+          .modal-content
+            .close-modal(data-dismiss='modal')
+              .lr
+                .rl  
+            .container
+              .row
+                .col-lg-8.col-lg-offset-2
+                  .modal-body(data-category=index+1)
+                    // Project Details Go Here
+                    h2= val.name
+                    .modal-button-container
+                      a.portfolio-link.button-spacer
+                        button.btn.btn-primary.difficulty-button(type='button' data-difficulty='0')  Easy
+                      a.portfolio-link.button-spacer
+                        button.btn.btn-primary.difficulty-button(type='button' data-difficulty='1')  Challenging
+                      a.portfolio-link.button-spacer
+                        button.btn.btn-primary.difficulty-button(type='button' data-difficulty='2')  Genius
+                      a.portfolio-link.button-spacer
+                        button.btn.btn-primary.accept-challenge-button(type='button' data-challenged='false' data-difficulty='0' data-ids='[]') Accept Challenge
+                      a.portfolio-link.button-spacer
+                        button.btn.btn-primary.back-to-category-button(type='button', data-dismiss='modal' data-difficulty-showing='true')  Back to Category
+                      p
+                    .gamescore-container
+                      .question-score
+                        h3 Question Score
+                        .question-score-text 100
+                      .game-score
+                        h3 Game Score
+                        .game-score-text 0
+                      .global-highscore
+                        h3 Global Leaderboard
+                        table(class='leaderboard-table')
+                          tr
+                            th(class='score-table-heading') Score
+                            th Name
+                          tr
+                            td.score-cell
+                            td.name-cell 
+                          tr
+                            td.score-cell 
+                            td.name-cell 
+                          tr
+                            td.score-cell 
+                            td.name-cell 
+                          tr
+                            td.score-cell
+                            td.name-cell
+                          tr
+                            td.score-cell 
+                            td.name-cell 
+                      .friend-highscore
+                        h3 Friends Leaderboard
+                        table(class='leaderboard-table')
+                          tr
+                            th(class='score-table-heading') Score
+                            th Name
+                          tr
+                            td.score-cell
+                            td.name-cell 
+                          tr
+                            td.score-cell 
+                            td.name-cell 
+                          tr
+                            td.score-cell 
+                            td.name-cell 
+                          tr
+                            td.score-cell
+                            td.name-cell
+                          tr
+                            td.score-cell 
+                            td.name-cell 
+                    .quiz-container
+                      img.img-responsive.quiz-image(src='img/portfolio/'+val.image, alt='')
+
+      // jQuery (necessary for Bootstrap's JavaScript plugins)
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+      script(type='text/javascript', src='js/jquery.1.11.1.js')
+      // Include all compiled plugins (below), or include individual files as needed
+      script(type='text/javascript', src='js/bootstrap.js')
+      script(type='text/javascript', src='js/SmoothScroll.js')
+      script(type='text/javascript', src='js/wow.min.js')
+      script(type='text/javascript', src='js/jquery.prettyPhoto.js')
+      script(type='text/javascript', src='js/jquery.isotope.js')
+      script(type='text/javascript', src='js/jqBootstrapValidation.js')
+      script(type='text/javascript', src='js/contact_me.js')
+      script(type='text/javascript', src='js/owl.carousel.js')
+      //
+        Javascripts
+        ==================================================
+      script(type='text/javascript', src='js/main.js')
+

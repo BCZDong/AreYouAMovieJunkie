@@ -1,0 +1,88 @@
+.quiz-container {
+	display: block;
+}
+
+.clue-table {
+	text-align: left;
+	margin-right: 50px;
+	color: black;
+}
+
+.clue-header {
+	width: 50px;
+	vertical-align: top;
+}
+
+.clue-image {
+	width: 400px;
+}
+
+.giveup-button {
+	background-color: red;
+	color: black;
+}
+
+.gamescore-container {
+	float: right;
+	background-color: lightblue;
+	border-radius: 12px;
+	width: 180px;
+	height: 580px;
+}
+
+.question-score-text {
+	font-weight: bold;
+	font-size: 80px;
+}
+
+.leaderboard-table {
+	margin-left: 10px;
+}
+
+.leaderboard-table .score-cell {
+	text-align: right;
+	padding-right: 12px !important;
+}
+
+.leaderboard-table .name-cell {
+	text-align: left;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 110px;
+}
+
+.score-table-heading {
+	width: 50px;
+}
+
+.button-spacer {
+	padding: 5px;
+}
+
+.quiz-image {
+	width: 300px;
+	margin-left: 150px;
+}
+
+.buttons {
+	width: 400px;
+}
+
+.dropdown li:before {
+	content: none !important;
+}
+
+#fb-logout-button {
+	display: none;
+}
+
+.friends-drop-down {
+	margin-left: 27% !important;
+}
+
+#Login-section {
+	background: transparent linear-gradient(to bottom, #032731 0%, #032E3A 20%, #032E3A 100%, #032731 100%) repeat scroll 0% 0%;
+	color: #5B777F;
+	color: white;
+}

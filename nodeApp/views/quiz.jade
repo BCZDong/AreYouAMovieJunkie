@@ -1,0 +1,8 @@
+extends layout
+
+block content
+	script(src='/javascripts/quiz.js')
+	
+	div(class="quiz-container")
+		each val, index in categories
+			div(class='category-item', data-category=index) #{categories[index]}
